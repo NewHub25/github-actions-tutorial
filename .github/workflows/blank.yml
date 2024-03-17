@@ -2,7 +2,7 @@ name: CI
 
 on:
   push:
-    branches: [ "main" ]
+    branches: ["main"]
   workflow_dispatch:
 
 jobs:
@@ -11,7 +11,7 @@ jobs:
       platform: aws
       region: us-east-1
       account: 1234567890123
-    
+
     runs-on: ubuntu-latest
     steps:
       - name: "Mostrar mensaje"
@@ -20,6 +20,7 @@ jobs:
         run: ls -a
       - name: "Mostrando variables de entorno"
         run: |
-          echo "platform: $platform"
-          echo "region: $region"
-          echo "account: $account"
+          echo "Leyendo las variables dentro del JOB"
+          echo "platform: ${{env.platform}}"
+          echo "region: ${{env.region}}"
+          echo "account: ${{env.account}}"
