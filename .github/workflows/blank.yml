@@ -29,4 +29,5 @@ jobs:
         run: echo "Platform azure"
       - name: "Mostrando variables por defecto"
         run: |
-          echo "github.event: ${{toJSON(github.event)}}"
+          # echo "Evento: ${{toJSON(github.event)}}"
+          echo "GITHUB_API_URL: $GITHUB_API_URL"
