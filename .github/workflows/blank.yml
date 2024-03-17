@@ -18,3 +18,8 @@ jobs:
         run: echo "Hola Mundo"
       - name: "Mostrar directorio"
         run: ls -a
+      - name: "Mostrando variables de entorno"
+        run: |
+          echo "platform: $platform"
+          echo "region: $region"
+          echo "account: $account"
