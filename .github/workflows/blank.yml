@@ -24,3 +24,6 @@ jobs:
           echo "platform: ${{env.platform}}"
           echo "region: ${{env.region}}"
           echo "account: ${{env.account}}"
+      - name: "Ejecutando condicional"
+        if: ${{ env.platform == 'azure' }}
+        run: echo "Platform azure"
