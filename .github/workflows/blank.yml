@@ -27,3 +27,6 @@ jobs:
       - name: "Ejecutando condicional"
         if: ${{ env.platform == 'azure' }}
         run: echo "Platform azure"
+      - name: "Mostrando variables por defecto"
+        run: |
+          echo "github.event: ${{toJSON(github.event)}}"
