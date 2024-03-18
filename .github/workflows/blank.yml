@@ -42,6 +42,9 @@ jobs:
         run: |
           echo "test1=holaPlaneta" >> "$GITHUB_OUTPUT"
           echo "text1=comoEstas" >> "$GITHUB_OUTPUT"
+      - name: output in the same job
+        run: |
+          echo "output from step 'mundo': ${{steps.mundo.outputs.test}}"
   job3:
     runs-on: ubuntu-latest
     needs: job2
