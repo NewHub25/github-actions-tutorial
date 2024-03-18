@@ -9,35 +9,27 @@ jobs:
   build:
     env:
       platform: aws
-      region: us-east-1
-      account: 1234567890123
-
     runs-on: ubuntu-latest
     steps:
       - name: "Mostrando variables de entorno"
         run: |
-          echo "Leyendo las variables dentro del JOB"
           echo "platform: ${{env.platform}}"
-          echo "region: ${{env.region}}"
-          echo "account: ${{env.account}}"
       - name: "Ejecutando condicional"
         if: env.platform != 'azure'
         run: echo "Platform is not azure"
       - name: "Mostrando variables por defecto"
         run: |
-          echo "API Url: $GITHUB_API_URL"
-          echo "actor: ${{github.actor}}"
-          echo "env: ${{github.env}}"
           echo "OS: $RUNNER_OS"
-  os-print:
-    runs-on: ubuntu-latest
-    steps:
-      - name: what is the OS
-        run: |
-          echo "The operating system on the runner is $RUNNER_OS."
           echo "OS's are Windows, macOS, Linux"
-  learning:
+  job2:
     runs-on: ubuntu-latest
+    outputs:
+      salida1: ${{steps.mundo.outputs}}
+      salida2: ${{steps.planeta.outputs}}
     steps:
-      - name: print steps
-        run: echo "${{steps}}"
+      - id: mundo
+        run: echo "test1=holaMundo" >> "$GITHUB_OUTPUT"
+      - id: planeta
+        run: echo "test1=holaPlaneta" >> "$GITHUB_OUTPUT"
+      - name: print outputs
+        run: echo "${{needs.outputs.salida1}}"
