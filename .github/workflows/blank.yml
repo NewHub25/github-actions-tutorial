@@ -10,6 +10,7 @@ jobs:
     env:
       platform: aws
       username: ${{secrets.USERNAME}}
+      password: ${{secrets.PASSWORD}}
     runs-on: ubuntu-latest
     steps:
       - name: "Mostrando variables de entorno"
@@ -18,11 +19,14 @@ jobs:
       - name: "Ejecutando condicional"
         if: env.platform != 'azure'
         run: echo "Platform is not azure"
-      - name: "Mostrando variables por defecto"
+      - name: "Mostrando variables por defecto y sistemas operativos"
         run: |
           echo "OS: $RUNNER_OS"
           echo "OS's are Windows, macOS, Linux"
-          echo "This is the username: ${{env.username}}"
+      - name: Conditional to check repository secrets
+        if: ${{env.username != '' && env.password != ''}}
+        run: |
+          echo "Hay un usuario con contraseña"
   job2:
     runs-on: ubuntu-latest
     outputs:
