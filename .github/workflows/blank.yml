@@ -9,6 +9,7 @@ jobs:
   build:
     env:
       platform: aws
+      username: ${{secrets.USERNAME}}
     runs-on: ubuntu-latest
     steps:
       - name: "Mostrando variables de entorno"
@@ -21,6 +22,7 @@ jobs:
         run: |
           echo "OS: $RUNNER_OS"
           echo "OS's are Windows, macOS, Linux"
+          echo "This is the username: ${{env.username}}"
   job2:
     runs-on: ubuntu-latest
     outputs:
@@ -38,7 +40,8 @@ jobs:
     runs-on: ubuntu-latest
     needs: job2
     steps:
-      - env:
+      - name: OUTPUTS yes!
+        env:
           SALIDA1: ${{needs.job2.outputs.salida1}}
           SALIDA2: ${{needs.job2.outputs.salida2}}
           SALIDA3: ${{needs.job2.outputs.salida3}}
