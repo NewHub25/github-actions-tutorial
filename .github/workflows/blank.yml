@@ -25,10 +25,11 @@ jobs:
           echo "region: ${{env.region}}"
           echo "account: ${{env.account}}"
       - name: "Ejecutando condicional"
-        if: ${{ env.platform == 'azure' }}
+        if: env.platform == 'azure'
         run: echo "Platform azure"
       - name: "Mostrando variables por defecto"
         run: |
-          echo "GITHUB_API_URL: $GITHUB_API_URL"
-          echo "GITHUB_ACTOR: ${{github.actor}}"
+          echo "API Url: $GITHUB_API_URL"
+          echo "RUNNER_NAME: $RUNNER_NAME"
+          echo "actor: ${{github.actor}}"
           echo "env: ${{github.env}}"
