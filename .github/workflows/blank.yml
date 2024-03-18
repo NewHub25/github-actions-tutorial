@@ -32,7 +32,9 @@ jobs:
       - name: "Mostrar directorio"
         run: ls -a
   os-print:
-    runs-on: windows-latest
+    runs-on: ubuntu-latest
     steps:
       - name: what is the OS
-        run: echo "The operating system on the runner is $env:RUNNER_OS."
+        run: |
+          echo "The operating system on the runner is $env:RUNNER_OS."
+          echo "OS's are Windows, macOS"
