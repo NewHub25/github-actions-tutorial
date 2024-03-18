@@ -27,10 +27,10 @@ jobs:
       salida2: ${{steps.planeta.outputs.test1}}
       salida1: ${{steps.mundo.outputs.test1}}
     steps:
-      - id: mundo
-        run: echo "test1=holaMundo" > "$GITHUB_OUTPUT"
       - id: planeta
         run: echo "test1=holaPlaneta" > "$GITHUB_OUTPUT"
+      - id: mundo
+        run: echo "test1=holaMundo" > "$GITHUB_OUTPUT"
   job3:
     runs-on: ubuntu-latest
     needs: job2
