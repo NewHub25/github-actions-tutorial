@@ -33,4 +33,4 @@ jobs:
       - id: planeta
         run: echo "test2=holaPlaneta" >> "$GITHUB_OUTPUT"
       - name: print outputs
-        run: echo "${{needs.outputs.salida3}}"
+        run: echo "$GITHUB_OUTPUT"
