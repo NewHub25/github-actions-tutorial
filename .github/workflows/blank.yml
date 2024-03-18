@@ -14,10 +14,6 @@ jobs:
 
     runs-on: ubuntu-latest
     steps:
-      - name: "Mostrar mensaje"
-        run: echo "Hola Mundo"
-      - name: "Mostrar directorio"
-        run: ls -a
       - name: "Mostrando variables de entorno"
         run: |
           echo "Leyendo las variables dentro del JOB"
@@ -26,18 +22,17 @@ jobs:
           echo "account: ${{env.account}}"
       - name: "Ejecutando condicional"
         if: env.platform != 'azure'
-        run: echo "Platform azure"
+        run: echo "Platform is not azure"
       - name: "Mostrando variables por defecto"
         run: |
           echo "API Url: $GITHUB_API_URL"
           echo "actor: ${{github.actor}}"
           echo "env: ${{github.env}}"
-  if-Windows-else:
-    runs-on: macos-latest
+          echo "OS: $RUNNER_OS"
+      - name: "Mostrar directorio"
+        run: ls -a
+  os-print:
+    runs-on: windows-latest
     steps:
-      - name: condition 1
-        if: runner.os == 'Windows'
+      - name: what is the OS
         run: echo "The operating system on the runner is $env:RUNNER_OS."
-      - name: condition 2
-        if: runner.os != 'Windows'
-        run: echo "The operating system on the runner is not Windows, it's $RUNNER_OS."
