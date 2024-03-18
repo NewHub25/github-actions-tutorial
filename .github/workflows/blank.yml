@@ -40,4 +40,4 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: print steps
-        run: echo "${{toJson(steps)}}"
+        run: echo "${{steps}}"
