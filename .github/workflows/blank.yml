@@ -35,4 +35,9 @@ jobs:
       - name: what is the OS
         run: |
           echo "The operating system on the runner is $RUNNER_OS."
-          echo "OS's are Windows, macOS"
+          echo "OS's are Windows, macOS, Linux"
+  learning:
+    runs-on: ubuntu-latest
+    steps:
+      - name: print steps
+        run: "${{toJson(steps)}}"
