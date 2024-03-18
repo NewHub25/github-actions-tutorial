@@ -27,6 +27,8 @@ jobs:
         if: ${{env.username != '' && env.password != ''}}
         run: |
           echo "Hay un usuario con contraseña"
+      - name: Vars
+        run: echo "fecha de aprendizaje de GH Actions --> ${{vars.DATE_LEARNING}}"
   job2:
     runs-on: ubuntu-latest
     outputs:
