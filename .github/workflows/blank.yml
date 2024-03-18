@@ -24,13 +24,16 @@ jobs:
   job2:
     runs-on: ubuntu-latest
     outputs:
+      salida1: ${{steps.mundo.outputs.test}}
       salida2: ${{steps.planeta.outputs.test1}}
-      salida1: ${{steps.mundo.outputs.test1}}
+      salida3: ${{steps.planeta.outputs.text1}}
     steps:
-      - id: planeta
-        run: echo "test1=holaPlaneta" > "$GITHUB_OUTPUT"
       - id: mundo
-        run: echo "test1=holaMundo" > "$GITHUB_OUTPUT"
+        run: echo "test=holaMundo" > "$GITHUB_OUTPUT"
+      - id: planeta
+        run: |
+          echo "test1=holaPlaneta" >> "$GITHUB_OUTPUT"
+          echo "text1=comoEstas" >> "$GITHUB_OUTPUT"
   job3:
     runs-on: ubuntu-latest
     needs: job2
@@ -38,6 +41,7 @@ jobs:
       - env:
           SALIDA1: ${{needs.job2.outputs.salida1}}
           SALIDA2: ${{needs.job2.outputs.salida2}}
+          SALIDA3: ${{needs.job2.outputs.salida3}}
         run: |
           echo "$SALIDA1"
-          echo "$SALIDA2"
+          echo "$SALIDA2, $SALIDA3"
