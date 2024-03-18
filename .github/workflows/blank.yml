@@ -24,12 +24,13 @@ jobs:
   job2:
     runs-on: ubuntu-latest
     outputs:
-      salida1: ${{steps.mundo.outputs}}
-      salida2: ${{steps.planeta.outputs}}
+      salida1: ${{steps.mundo.outputs.test1}}
+      salida2: ${{steps.planeta.outputs.test1}}
+      salida3: ${{steps.planeta.outputs.test2}}
     steps:
       - id: mundo
         run: echo "test1=holaMundo" >> "$GITHUB_OUTPUT"
       - id: planeta
-        run: echo "test1=holaPlaneta" >> "$GITHUB_OUTPUT"
+        run: echo "test2=holaPlaneta" >> "$GITHUB_OUTPUT"
       - name: print outputs
-        run: echo "${{needs.outputs.salida1}}"
+        run: echo "${{needs.outputs.salida3}}"
